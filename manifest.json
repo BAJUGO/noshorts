@@ -3,13 +3,17 @@
   "name": "noshorts",
   "version": "0.1.0",
 
-  "description": "disable all Youtube shorts that distract your attention",
+  "description": "disable all YouTube shorts that distract your attention",
 
 
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["scripts/main.js"]
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["scripts/youtube.js"]
+    },
+    {
+      "matches": ["https://www.tiktok.com/", "https://www.tiktok.com/*", "https://www.instagram.com/", "https://www.instagram.com/*"],
+      "js": ["scripts/full_prohibited.js"]
     }
   ],
   "web_accessible_resources": [
