@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "noshorts",
+  "version": "0.1.0",
+
+  "description": "disable all Youtube shorts that distract your attention",
+
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/main.js"]
+    }
+  ]
+}
