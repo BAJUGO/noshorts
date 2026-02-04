@@ -14,8 +14,19 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 function checkUrl() {
     if (window.location.href.includes("https://www.youtube.com/shorts/")) {
-        location.href = browser.runtime.getURL("../pages/anti-brainrot.html");
 
+        window.postMessage(
+            {
+                "type": "AntiBrainrot",
+                "url": window.location.href,
+                "time": Date.now(),
+                "site": "youtube_shorts"
+            }, "*"
+        )
+        console.log("message_send")
+        setTimeout(() => {
+            location.href = browser.runtime.getURL("../pages/anti-brainrot.html");
+        }, 50);
     }
 }
 
