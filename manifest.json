@@ -5,6 +5,21 @@
 
   "description": "disable all YouTube shorts that distract your attention",
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "BAJUGO_@_noshorts.com"
+    }
+  },
+  "icons": {
+    "48": "icons/48.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/48.png"
+    },
+    "default_title": "No shorts!",
+    "default_popup": "pages/noshorts_popup.html"
+  },
 
   "content_scripts": [
     {
@@ -12,11 +27,11 @@
       "js": ["scripts/youtube.js"]
     },
     {
-      "matches": ["https://www.tiktok.com/", "https://www.tiktok.com/*", "https://www.instagram.com/", "https://www.instagram.com/*"],
+      "matches": ["*://*.tiktok.com/*", "*://*.instagram.com/*"],
       "js": ["scripts/full_prohibited.js"]
     }
   ],
   "web_accessible_resources": [
-    "anti-brainrot.html"
+    "pages/anti-brainrot.html"
   ]
 }

@@ -1,1 +1,1 @@
-location.href = browser.runtime.getURL("../anti-brainrot.html");
+location.href = browser.runtime.getURL("../pages/anti-brainrot.html");

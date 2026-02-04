@@ -14,7 +14,7 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 function checkUrl() {
     if (window.location.href.includes("https://www.youtube.com/shorts/")) {
-        location.href = browser.runtime.getURL("../anti-brainrot.html");
+        location.href = browser.runtime.getURL("../pages/anti-brainrot.html");
 
     }
 }
