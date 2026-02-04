@@ -7,7 +7,10 @@ function listener(tab) {
 
 
 browser.runtime.onMessage.addListener(listener_messages)
-function listener_messages(event, tab) {
-    console.log(JSON.stringify(event.data));
-    console.log(JSON.stringify(tab));
+function listener_messages(event) {
+    let cite = JSON.parse(event.cite);
+    let data = JSON.parse(event.data)
+    let stored = JSON.parse(localStorage.getItem(cite) || [])
+    stored.push(JSON.stringify(data));
+    localStorage.setItem(cite, JSON.stringify(stored));
 }
