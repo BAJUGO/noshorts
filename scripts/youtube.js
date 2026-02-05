@@ -14,9 +14,12 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 function checkUrl() {
     if (window.location.href.includes("https://www.youtube.com/shorts/")) {
-        location.href = browser.runtime.getURL("../pages/anti-brainrot.html");
+        let cite = JSON.stringify("youtube_shorts")
+        let data = JSON.stringify(Date.now())
+        let auth = JSON.stringify("AntiBrainrot")
 
+        browser.runtime.sendMessage({cite: cite, data: data, auth: auth})
+        location.href = browser.extension.getURL("../pages/anti_brainrot.html");
     }
 }
-
 

@@ -17,8 +17,11 @@
     "default_icon": {
       "48": "icons/48.png"
     },
-    "default_title": "No shorts!",
-    "default_popup": "pages/noshorts_popup.html"
+    "default_title": "No shorts!"
+  },
+
+  "background": {
+    "scripts": ["scripts/background.js"]
   },
 
   "content_scripts": [
@@ -31,6 +34,7 @@
       "js": ["scripts/full_prohibited.js"]
     }
   ],
+
   "web_accessible_resources": [
     "pages/anti-brainrot.html"
   ]
