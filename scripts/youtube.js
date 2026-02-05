@@ -14,10 +14,12 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 function checkUrl() {
     if (window.location.href.includes("https://www.youtube.com/shorts/")) {
-        let cite = "youtube_shorts"
-        let data = Date.now()
-        browser.runtime.sendMessage({cite: JSON.stringify(cite), data: JSON.stringify(data)})
-        location.href = browser.extension.getURL("../pages/anti-brainrot.html");
+        let cite = JSON.stringify("youtube_shorts")
+        let data = JSON.stringify(Date.now())
+        let auth = JSON.stringify("AntiBrainrot")
+
+        browser.runtime.sendMessage({cite: cite, data: data, auth: auth})
+        location.href = browser.extension.getURL("../pages/anti_brainrot.html");
     }
 }
 
