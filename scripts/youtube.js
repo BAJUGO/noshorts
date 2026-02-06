@@ -13,7 +13,7 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 
 function checkUrl() {
-    if (window.location.href.includes("https://www.youtube.com/shorts/")) {
+    if (window.location.href.startsWith("https://www.youtube.com/shorts/")) {
         let cite = JSON.stringify("youtube_shorts")
         let data = JSON.stringify(Date.now())
         let auth = JSON.stringify("AntiBrainrot")

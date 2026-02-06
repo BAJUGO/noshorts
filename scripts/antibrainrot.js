@@ -1,2 +1,3 @@
-let data = JSON.parse(localStorage.getItem("youtube_shorts"));
-console.log(data)
+for (let i = 0; i < localStorage.length; i++) {
+    console.log(`${localStorage.key(i)} all visit-times: ${localStorage.getItem(localStorage.key(i))}`);
+}
