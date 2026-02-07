@@ -1,9 +1,9 @@
 checkUrl()
-let lastUrl = window.location.href;
+let lastUrl = location.href;
 
 
 const observer = new MutationObserver(() => {
-    if (window.location.href !== lastUrl) {
+    if (location.href !== lastUrl) {
         lastUrl = window.location.href;
         checkUrl();
     }
@@ -13,8 +13,8 @@ observer.observe(document.querySelector('ytd-app'), {childList: true, subtree: t
 
 
 function checkUrl() {
-    if (window.location.href.startsWith("https://www.youtube.com/shorts/")) {
-        let cite = JSON.stringify("youtube_shorts")
+    if (location.href.startsWith("https://www.youtube.com/shorts/")) {
+        let cite = JSON.stringify(location.host.replace("www.", ""))
         let data = JSON.stringify(Date.now())
         let auth = JSON.stringify("AntiBrainrot")
 

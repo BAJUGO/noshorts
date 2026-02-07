@@ -1,16 +1,4 @@
-let host
-switch (location.host) {
-    case "www.tiktok.com":
-        host = "tiktok"
-        break;
-    case "www.instagram.com":
-        host = "instagram"
-        break;
-    default:
-        host = "unknown";
-}
-
-let cite = JSON.stringify(host)
+let cite = JSON.stringify(location.host).replace("www.", "")
 let data = JSON.stringify(Date.now())
 let auth = JSON.stringify("AntiBrainrot")
 

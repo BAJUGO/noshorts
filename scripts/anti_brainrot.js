@@ -37,5 +37,9 @@ for (let cite = 0; cite < localStorage.length; cite++) {
 }
 
 let maxTimeH = document.createElement("h1")
-maxTimeH.innerText = `You've tried to reach ${maxKey} ${maxLength} times`
+if (maxLength) {
+    maxTimeH.innerText = `The most tried: ${maxKey} ${maxLength} attempts`
+}
+else {maxTimeH.innerText = "Hey, you didn't visited brainrot cites! Or maybe you just deleted localStorage :)"}
+
 document.body.appendChild(maxTimeH)
