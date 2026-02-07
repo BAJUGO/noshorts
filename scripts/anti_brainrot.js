@@ -1,5 +1,7 @@
 let maxLength = 0
 let maxKey = ""
+let ul_for_visits = document.getElementById("ul_for_visits")
+
 for (let cite = 0; cite < localStorage.length; cite++) {
 
     let new_h = document.createElement("h1")
@@ -32,14 +34,19 @@ for (let cite = 0; cite < localStorage.length; cite++) {
         new_ul.appendChild(new_li)
     }
 
-    document.body.appendChild(new_h)
-    document.body.appendChild(new_ul)
+    ul_for_visits.appendChild(new_h)
+    ul_for_visits.appendChild(new_ul)
 }
 
-let maxTimeH = document.createElement("h1")
+let maxTimeH = document.getElementById("maxTimeH")
 if (maxLength) {
     maxTimeH.innerText = `The most tried: ${maxKey} ${maxLength} attempts`
 }
 else {maxTimeH.innerText = "Hey, you didn't visited brainrot cites! Or maybe you just deleted localStorage :)"}
 
-document.body.appendChild(maxTimeH)
+
+let clear_lS = document.getElementById("clear_lS")
+clear_lS.addEventListener("click", function () {
+    window.location.reload()
+    localStorage.clear()
+})
