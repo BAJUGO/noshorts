@@ -31,7 +31,7 @@
       "js": ["scripts/youtube.js"]
     },
     {
-      "matches": ["*://*.tiktok.com/*", "*://*.instagram.com/*"],
+      "matches": ["*://*.tiktok.com/*", "*://*.instagram.com/*", "*://*.x.com/*"],
       "js": ["scripts/full_prohibited.js"]
     }
   ],
