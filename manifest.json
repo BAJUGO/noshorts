@@ -5,6 +5,10 @@
 
   "description": "disable all YouTube shorts that distract your attention",
 
+  "permissions": [
+    "<all_urls>"
+  ],
+
   "browser_specific_settings": {
     "gecko": {
       "id": "BAJUGO_@_noshorts.com"

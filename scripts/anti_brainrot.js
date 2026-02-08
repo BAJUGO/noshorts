@@ -50,3 +50,20 @@ clear_lS.addEventListener("click", function () {
     window.location.reload()
     localStorage.clear()
 })
+
+
+document.getElementById("custom_url_form").addEventListener("submit", registerContentScripts)
+
+
+async function registerContentScripts(event) {
+    event.preventDefault()
+    let custom_url = document.getElementById("custom_url_input").value
+    await browser.contentScripts.register({
+        js: [{file: "full_prohibited.js"}],
+        matches: [`*://*.${custom_url}/*`],
+        runAt: "document_idle"
+    })
+
+
+    custom_url.value = ""
+}
