@@ -8,19 +8,23 @@ function listener(tab) {
 
 browser.runtime.onMessage.addListener(listener_messages)
 
-function listener_messages(event) {
-    if (event.data && JSON.parse(event.auth) === "AntiBrainrot") {
+function listener_messages(message) {
+    if (message.auth === "AntiBrainrot") {
         try {
-            let cite = JSON.parse(event.cite);
-            let data = JSON.parse(event.data)
-            let stored = JSON.parse(localStorage.getItem(cite)) || []
-
-            stored.push(JSON.stringify(data));
-            localStorage.setItem(cite, JSON.stringify(stored));
-
+            let stored = JSON.parse(localStorage.getItem(message.cite)) || []
+            stored.push(message.data)
+            localStorage.setItem(message.cite, JSON.stringify(stored))
         }
-        catch (error) {
-            console.log(error);
+        catch (e) {
+            console.error(e)
         }
     }
+    if (message.auth === "CustomProhibit") {
+        void registerContentScript(message.url)
+    }
+}
+
+
+async function registerContentScript(url) {
+    await browser.contentScripts.register(url)
 }

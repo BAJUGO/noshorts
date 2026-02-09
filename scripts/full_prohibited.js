@@ -1,6 +1,6 @@
-let cite = JSON.stringify(location.host).replace("www.", "")
-let data = JSON.stringify(Date.now())
-let auth = JSON.stringify("AntiBrainrot")
+let cite = location.host.replace("www.", "")
+let data = Date.now()
+let auth = "AntiBrainrot"
 
-browser.runtime.sendMessage({cite: cite, data: data, auth:auth});
-location.href = browser.extension.getURL("../pages/anti_brainrot.html");
+browser.runtime.sendMessage({ cite, data, auth })
+location.href = browser.runtime.getURL("../pages/anti_brainrot.html")

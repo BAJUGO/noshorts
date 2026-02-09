@@ -1,3 +1,5 @@
+"use strict";
+
 let maxLength = 0
 let maxKey = ""
 let ul_for_visits = document.getElementById("ul_for_visits")
@@ -52,18 +54,20 @@ clear_lS.addEventListener("click", function () {
 })
 
 
-document.getElementById("custom_url_form").addEventListener("submit", registerContentScripts)
+document.getElementById("custom_url_form").addEventListener("submit", sendCustomPatternScript)
 
 
-async function registerContentScripts(event) {
+async function sendCustomPatternScript(event) {
     event.preventDefault()
-    let custom_url = document.getElementById("custom_url_input").value
-    await browser.contentScripts.register({
-        js: [{file: "full_prohibited.js"}],
-        matches: [`*://*.${custom_url}/*`],
-        runAt: "document_idle"
-    })
+    let custom_url = document.getElementById("custom_url_input")
+    let pattern = `*://*.${custom_url.value.trim()}/*`
+    console.log(pattern)
+    let url = {
+        js: [{file: "scripts/full_prohibited.js"}],
+        matches: [pattern]
+    }
 
+    browser.runtime.sendMessage({url: url, auth: "CustomProhibit"})
 
     custom_url.value = ""
 }
