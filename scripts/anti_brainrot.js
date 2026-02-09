@@ -60,14 +60,12 @@ document.getElementById("custom_url_form").addEventListener("submit", sendCustom
 async function sendCustomPatternScript(event) {
     event.preventDefault()
     let custom_url = document.getElementById("custom_url_input")
-    let pattern = `*://*.${custom_url.value.trim()}/*`
-    console.log(pattern)
-    let url = {
+    let pattern = `*://*.${custom_url.value}/*`
+    let final_script = {
         js: [{file: "scripts/full_prohibited.js"}],
         matches: [pattern]
     }
-
-    browser.runtime.sendMessage({url: url, auth: "CustomProhibit"})
-
+    browser.runtime.sendMessage({final_script: final_script, auth: "CustomUrl"})
     custom_url.value = ""
+
 }
