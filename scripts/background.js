@@ -1,9 +1,15 @@
 console.log("background script is totally running")
 
-browser.browserAction.onClicked.addListener(listener)
-function listener(tab) {
-    console.log(tab);
-}
+
+for (let i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i).startsWith("custom.")) {
+        browser.contentScripts.register({
+            js: [{file: "scripts/full_prohibited.js"}],
+            matches: [`*://*.${localStorage.key(i).replace("custom.", "")}/*`]
+        })
+    }}
+
+
 
 
 browser.runtime.onMessage.addListener(listener_messages)
@@ -16,20 +22,21 @@ function listener_messages(message) {
            localStorage.setItem(message.cite, JSON.stringify(stored))
        }
        catch (e) {
-           console.error(e);
+           console.log(e);
        }
     }
     if (message.auth === "CustomUrl") {
         try {
-            void registerCustomScript(message.final_script)
+            browser.contentScripts.register({
+                js: [{file: "scripts/full_prohibited.js"}],
+                matches: [`*://*.${message.cite}/*`]
+            })
+
         }
         catch (e) {
-            console.error(e)
+            console.log(e)
         }
     }
 }
 
-async function registerCustomScript(final_script) {
-    await browser.contentScripts.register(final_script);
-}
 

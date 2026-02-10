@@ -1,10 +1,11 @@
-"use strict";
-
 let maxLength = 0
 let maxKey = ""
 let ul_for_visits = document.getElementById("ul_for_visits")
 
 for (let cite = 0; cite < localStorage.length; cite++) {
+    if (localStorage.key(cite).startsWith("custom.")) {
+        continue
+    }
 
     let new_h = document.createElement("h1")
     let new_ul = document.createElement("ul")
@@ -47,25 +48,29 @@ if (maxLength) {
 else {maxTimeH.innerText = "Hey, you didn't visited brainrot cites! Or maybe you just deleted localStorage :)"}
 
 
-let clear_lS = document.getElementById("clear_lS")
+let clear_lS = document.getElementById("clear_history")
 clear_lS.addEventListener("click", function () {
+    const keys = Object.keys(localStorage)
+    for (let key of keys) {
+        if (!key.startsWith("custom.")) {
+            localStorage.removeItem(key)
+        }
+    }
+
     window.location.reload()
-    localStorage.clear()
 })
 
 
-document.getElementById("custom_url_form").addEventListener("submit", sendCustomPatternScript)
+document.getElementById("custom_url_form").addEventListener("submit", sendCustomUrlScript)
 
 
-async function sendCustomPatternScript(event) {
+async function sendCustomUrlScript(event) {
     event.preventDefault()
-    let custom_url = document.getElementById("custom_url_input")
-    let pattern = `*://*.${custom_url.value}/*`
-    let final_script = {
-        js: [{file: "scripts/full_prohibited.js"}],
-        matches: [pattern]
-    }
-    browser.runtime.sendMessage({final_script: final_script, auth: "CustomUrl"})
-    custom_url.value = ""
+    let custom_cite = document.getElementById("custom_cite_input")
+    let cite = custom_cite.value
+    localStorage.setItem(`custom.${cite}`, JSON.stringify("This url is custom"))
+
+    browser.runtime.sendMessage({cite: cite, auth: "CustomUrl"})
+    custom_cite.value = ""
 
 }

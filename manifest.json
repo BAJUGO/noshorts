@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "noshorts",
-  "version": "0.1.2",
+  "version": "0.1.3",
 
   "description": "disable all YouTube shorts that distract your attention",
 
@@ -14,9 +14,11 @@
       "id": "BAJUGO_@_noshorts.com"
     }
   },
+
   "icons": {
     "48": "icons/48.png"
   },
+
   "browser_action": {
     "default_icon": {
       "48": "icons/48.png"
