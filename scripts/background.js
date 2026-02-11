@@ -1,11 +1,11 @@
 console.log("background script is totally running")
 
-
 for (let i = 0; i < localStorage.length; i++) {
-    if (localStorage.key(i).startsWith("custom.")) {
+    const key = localStorage.key(i);
+    if (key.startsWith("custom.")) {
         browser.contentScripts.register({
             js: [{file: "scripts/full_prohibited.js"}],
-            matches: [`*://*.${localStorage.key(i).replace("custom.", "")}/*`]
+            matches: [`*://*.${key.replace("custom.", "")}/*`]
         })
     }}
 
@@ -32,7 +32,6 @@ async function listener_messages(message) {
                 js: [{file: "scripts/full_prohibited.js"}],
                 matches: [`*://*.${message.cite}/*`]
             })
-
         }
         catch (e) {
             console.log(e)

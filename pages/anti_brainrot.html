@@ -19,10 +19,17 @@
 </div>
 
 <h1 id="maxTimeH"></h1>
-<button id="clear_history" style="margin:auto; display:block; height: 90px; width: 290px; font-size: 30px">Clear visits history</button>
+
+<button id="clear_history" style="margin:auto; display:block; height: 90px; width: 290px; font-size: 30px">
+    Clear visits history
+</button>
+
+<button id="clean_custom_urls" style="margin:auto; display:block; height: 90px; width: 290px; font-size: 30px">
+    Clear custom URLS
+</button>
 
 
-<div style="margin-top: 10px">
+<div style="margin-top: 20px">
     <form id="custom_url_form">
         <label for="custom_cite_input" style="display: block">Format should be like: twiter.com, yandex.ru, wikipedia.org and so on.</label>
         <input type="text" id="custom_cite_input" placeholder="Enter a url here">
@@ -30,9 +37,10 @@
     </form>
 </div>
 
-<div style="margin-top: 10px">
+
+<div style="margin-top: 20px">
     <form id="delete_custom_url_form">
-        <label for="custom_cite_input" style="display: block">Format should be like: twiter.com, yandex.ru, wikipedia.org and so on.</label>
+        <label for="custom_cite_input" style="display: block">Delete your custom Url (format is the same)</label>
         <input type="text" id="delete_custom_cite_input" placeholder="Enter a url here">
         <button type="submit" id="delete_custom_cite_button">Delete custom url</button>
     </form>
