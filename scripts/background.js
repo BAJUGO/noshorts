@@ -9,12 +9,12 @@ for (let i = 0; i < localStorage.length; i++) {
         })
     }}
 
-
+let registeredScripts = {}
 
 
 browser.runtime.onMessage.addListener(listener_messages)
 
-function listener_messages(message) {
+async function listener_messages(message) {
     if (message.auth === "AntiBrainrot") {
        try {
            let stored = JSON.parse(localStorage.getItem(message.cite)) || [];
@@ -25,13 +25,24 @@ function listener_messages(message) {
            console.log(e);
        }
     }
+
     if (message.auth === "CustomUrl") {
         try {
-            browser.contentScripts.register({
+            registeredScripts[message.cite] = await browser.contentScripts.register({
                 js: [{file: "scripts/full_prohibited.js"}],
                 matches: [`*://*.${message.cite}/*`]
             })
 
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    if (message.auth === "DeleteCustomUrl") {
+        try {
+            registeredScripts[message.cite].unregister()
+            delete registeredScripts[message.cite]
         }
         catch (e) {
             console.log(e)

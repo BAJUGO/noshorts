@@ -63,7 +63,6 @@ clear_lS.addEventListener("click", function () {
 
 document.getElementById("custom_url_form").addEventListener("submit", sendCustomUrlScript)
 
-
 async function sendCustomUrlScript(event) {
     event.preventDefault()
     let custom_cite = document.getElementById("custom_cite_input")
@@ -71,6 +70,20 @@ async function sendCustomUrlScript(event) {
     localStorage.setItem(`custom.${cite}`, JSON.stringify("This url is custom"))
 
     browser.runtime.sendMessage({cite: cite, auth: "CustomUrl"})
+    custom_cite.value = ""
+}
+
+
+document.getElementById("delete_custom_url_form").addEventListener("submit", deleteCustomUrlScript)
+
+async function deleteCustomUrlScript(event) {
+    event.preventDefault()
+    let custom_cite = document.getElementById("delete_custom_cite_input")
+    let cite = custom_cite.value
+    localStorage.removeItem(`custom.${cite}`)
+
+    browser.runtime.sendMessage({cite: cite, auth: "DeleteCustomUrl"})
+
     custom_cite.value = ""
 
 }
