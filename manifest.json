@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "noshorts",
+  "name": "AntiBrainrot",
   "version": "0.1.4",
 
-  "description": "disable all YouTube shorts that distract your attention",
+  "description": "Disable apps that distract your attention",
 
   "permissions": [
     "<all_urls>"
@@ -11,7 +11,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "BAJUGO_@_noshorts.com"
+      "id": "BAJUGO_@_antibrainrot.com"
     }
   },
 
