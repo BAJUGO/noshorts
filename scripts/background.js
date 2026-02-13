@@ -17,9 +17,9 @@ browser.runtime.onMessage.addListener(listener_messages)
 async function listener_messages(message) {
     if (message.auth === "AntiBrainrot") {
        try {
-           let stored = JSON.parse(localStorage.getItem(message.cite)) || [];
+           let stored = JSON.parse(localStorage.getItem(message.site)) || [];
            stored.push(message.data)
-           localStorage.setItem(message.cite, JSON.stringify(stored))
+           localStorage.setItem(message.site, JSON.stringify(stored))
        }
        catch (e) {
            console.log(e);
@@ -28,9 +28,9 @@ async function listener_messages(message) {
 
     if (message.auth === "CustomUrl") {
         try {
-            registeredScripts[message.cite] = await browser.contentScripts.register({
+            registeredScripts[message.site] = await browser.contentScripts.register({
                 js: [{file: "scripts/full_prohibited.js"}],
-                matches: [`*://*.${message.cite}/*`]
+                matches: [`*://*.${message.site}/*`]
             })
         }
         catch (e) {
@@ -40,8 +40,8 @@ async function listener_messages(message) {
 
     if (message.auth === "DeleteCustomUrl") {
         try {
-            registeredScripts[message.cite].unregister()
-            delete registeredScripts[message.cite]
+            registeredScripts[message.site].unregister()
+            delete registeredScripts[message.site]
         }
         catch (e) {
             console.log(e)

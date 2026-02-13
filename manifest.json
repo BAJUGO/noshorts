@@ -3,7 +3,7 @@
   "name": "AntiBrainrot",
   "version": "0.1.4",
 
-  "description": "Disable apps that distract your attention",
+  "description": "Disable webpages that distract your attention",
 
   "permissions": [
     "<all_urls>"
@@ -11,7 +11,10 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "BAJUGO_@_antibrainrot.com"
+      "id": "BAJUGO_@_antibrainrot.com",
+      "data_collection_permissions": {
+         "required": ["none"]
+      }
     }
   },
 

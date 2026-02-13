@@ -31,7 +31,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
 document.getElementById("maxTimeH").innerText = (maxLength)
     ? `The most tried: ${maxKey} ${maxLength} attempts`
-    : "Hey, you didn't visited brainrot cites! Or maybe you just deleted localStorage :)"
+    : "Hey, you didn't visited brainrot sites! Or maybe you just deleted localStorage :)"
 
 
 document.getElementById("clear_history").addEventListener("click", function () {
@@ -50,7 +50,7 @@ document.getElementById("clean_custom_urls").addEventListener("click", function 
         if (key.startsWith("custom.")) {
             localStorage.removeItem(key)
         }
-        browser.runtime.sendMessage({cite: key, auth: "DeleteCustomUrl"})
+        browser.runtime.sendMessage({site: key, auth: "DeleteCustomUrl"})
     }
     window.location.reload()
 })
@@ -60,14 +60,14 @@ document.getElementById("custom_url_form").addEventListener("submit", sendCustom
 
 async function sendCustomUrlScript(event) {
     event.preventDefault()
-    let custom_cite = document.getElementById("custom_cite_input")
-    let cite = custom_cite.value
-    if (/^[^.].*\..*[^.]$/.test(cite)) {
-        localStorage.setItem(`custom.${cite}`, JSON.stringify("This url is custom"))
-        browser.runtime.sendMessage({cite: cite, auth: "CustomUrl"})
+    let custom_site = document.getElementById("custom_site_input")
+    let site = custom_site.value
+    if (/^[^.].*\..*[^.]$/.test(site)) {
+        localStorage.setItem(`custom.${site}`, JSON.stringify("This url is custom"))
+        browser.runtime.sendMessage({site: site, auth: "CustomUrl"})
     }
     else {console.error("Wrong input!")}
-    custom_cite.value = ""
+    custom_site.value = ""
 }
 
 
@@ -75,12 +75,12 @@ document.getElementById("delete_custom_url_form").addEventListener("submit", del
 
 async function deleteCustomUrlScript(event) {
     event.preventDefault()
-    let custom_cite = document.getElementById("delete_custom_cite_input")
-    let cite = custom_cite.value
-    if (/^[^.].*\..*[^.]$/.test(cite)) {
-        localStorage.removeItem(`custom.${cite}`)
-        browser.runtime.sendMessage({cite: cite, auth: "DeleteCustomUrl"})
+    let custom_site = document.getElementById("delete_custom_site_input")
+    let site = custom_site.value
+    if (/^[^.].*\..*[^.]$/.test(site)) {
+        localStorage.removeItem(`custom.${site}`)
+        browser.runtime.sendMessage({site: site, auth: "DeleteCustomUrl"})
     }
     else {console.error("Wrong input!")}
-    custom_cite.value = ""
+    custom_site.value = ""
 }
