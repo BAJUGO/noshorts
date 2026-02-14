@@ -40,7 +40,7 @@
       "js": ["scripts/youtube.js"]
     },
     {
-      "matches": ["*://*.tiktok.com/*", "*://*.instagram.com/*"],
+      "matches": ["*://*.tiktok.com/*"],
       "js": ["scripts/full_prohibited.js"]
     }
   ],
