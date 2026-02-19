@@ -30,8 +30,8 @@ for (let i = 0; i < localStorage.length; i++) {
 
 
 document.getElementById("maxTimeH").innerText = (maxLength)
-    ? `The most tried: ${maxKey} ${maxLength} attempts`
-    : "Hey, you didn't visited brainrot sites! Or maybe you just deleted localStorage :)"
+    ? `The most tried: ${maxKey} ${maxLength} with attempts`
+    : "Hey, you didn't visit brainrot sites! Or maybe you just deleted localStorage :)"
 
 
 document.getElementById("clear_history").addEventListener("click", function () {
