@@ -1,0 +1,11 @@
+ytd-guide-entry-renderer:has(a[title*="Shorts" i]),
+ytd-mini-guide-entry-renderer:has(a[aria-label*="Shorts"]),
+ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+ytd-reel-shelf-renderer,
+ytd-rich-shelf-renderer[is-shorts],
+[is-shorts],
+#endpoint[title*="Shorts" i],
+a[href*="/shorts"]
+{
+    display: none !important;
+}
